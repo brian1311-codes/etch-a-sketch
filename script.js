@@ -2,27 +2,48 @@ const container = document.querySelector('.container');
 const button = document.querySelector('button');
 const newGridBtn = document.querySelector('.new-grid-btn');
 
+function createGrid(size) {
+
+    container.innerHTML = '';
+
+    const totalSize = size * size;
+
+    for(let i = 0; i < totalSize; i++) {
+
+        const square = document.createElement('div');
+
+        square.style.width = `${500 / size}px`;
+        square.style.height = `${500 / size}px`;
+
+        square.classList.add('square');
+
+        square.addEventListener('mouseover', () => {
+            square.style.backgroundColor = 'black';
+        });
+
+        container.appendChild(square);
+    }
+}
+
 newGridBtn.addEventListener('click', () => {
-    const newSize = prompt('Enter new grid size (max 100):');
-    
-})
 
-for(let i = 0; i < 1024; i++) {
-    const div = document.createElement('div');
-    div.classList.add('square');
-    container.appendChild(div);
+    const newSize = prompt("Enter a value between 1 to 100");
+    const size = Number(newSize);
 
-    
-
-    div.addEventListener('mouseover', () => {
-    div.style.backgroundColor = 'black';
-
+    if(size >= 1 && size <= 100) {
+        createGrid(size);
+    } else {
+        alert("Invalid Number");
+    }
 });
 
 button.addEventListener('click', () => {
-    div.style.backgroundColor = 'white';
+
+    const squares = document.querySelectorAll('div');
+
+    squares.forEach(square => {
+        square.style.backgroundColor = 'white';
+    });
 });
-}
 
-
-
+createGrid(16);
