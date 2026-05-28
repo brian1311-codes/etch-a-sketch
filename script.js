@@ -1,5 +1,5 @@
 const container = document.querySelector('.container');
-const button = document.querySelector('button');
+const button = document.querySelector('.clear-button');
 const newGridBtn = document.querySelector('.new-grid-btn');
 
 function createGrid(size) {
