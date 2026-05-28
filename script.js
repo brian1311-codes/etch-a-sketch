@@ -17,8 +17,50 @@ function createGrid(size) {
 
         square.classList.add('square');
 
+        // function randomColor(){
+
+        //      const opacity = Number(square.dataset.opacity) || 0;
+
+        //      opacity += 0.1;
+
+        //      if(opacity > 1) opacity = 1;
+
+        //      opacity = square.dataset.opacity;
+
+        //      if(!square.dataset.color) {
+        //         const r = Math.floor(Math.random() * 256);
+        //         const g = Math.floor(Math.random() * 256);
+        //         const b = Math.floor(Math.random() * 256);
+
+        //         square.dataset.color = `${r}, ${g}, ${b}`;
+        //      }
+
+        //      const color = square.dataset.color;
+
+        //      return `rgba(${color}, ${opacity})`;
+        // }
+
         square.addEventListener('mouseover', () => {
-            square.style.backgroundColor = 'black';
+            
+            let opacity = Number(square.dataset.opacity) || 0;
+
+             opacity += 0.1;
+
+             if(opacity > 1) opacity = 1;
+
+             square.dataset.opacity = opacity;
+
+             if(!square.dataset.color) {
+                const r = Math.floor(Math.random() * 256);
+                const g = Math.floor(Math.random() * 256);
+                const b = Math.floor(Math.random() * 256);
+
+                square.dataset.color = `${r}, ${g}, ${b}`;
+             }
+
+             const color = square.dataset.color;
+
+             square.style.backgroundColor = `rgba(${color}, ${opacity})`;
         });
 
         container.appendChild(square);
